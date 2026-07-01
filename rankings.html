@@ -1,1 +1,238 @@
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VFL | League Rankings & Standings</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    
+    <style type="text/tailwindcss">
+        @import "tailwindcss";
+        @custom-variant dark (&:where(.dark, .dark *));
+    </style>
 
+    <style>
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: #f4f4f5; }
+        .dark ::-webkit-scrollbar-track { background: #09090b; }
+        ::-webkit-scrollbar-thumb { background: #d4d4d8; border-radius: 4px; }
+        .dark ::-webkit-scrollbar-thumb { background: #27272a; }
+        ::-webkit-scrollbar-thumb:hover { background: #a1a1aa; }
+        .dark ::-webkit-scrollbar-thumb:hover { background: #3f3f46; }
+    </style>
+</head>
+<body class="bg-zinc-50 dark:bg-zinc-950 text-zinc-900 font-sans antialiased transition-colors duration-300 dark:text-zinc-100 bg-cover bg-fixed bg-center bg-no-repeat" 
+      style="background-image: linear-gradient(rgba(244, 244, 245, 0.85), rgba(244, 244, 245, 0.85)), url('https://cdn.discordapp.com/attachments/1487965610804514826/1521749796724150323/IMG_1024.png?ex=6a45f770&is=6a44a5f0&hm=fa19f73e07c9cbd07d6883d08fb8df2cad458e37bf1ea1249e9b067a32045dad&');"
+      id="vfl-body">
+
+    <nav class="sticky top-0 z-50 bg-white/70 dark:bg-zinc-950/70 backdrop-blur-md border-b border-zinc-200/60 dark:border-zinc-800/60 px-6 py-4 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <a href="index.html" class="text-2xl font-black tracking-wider text-blue-500">VFL</a>
+            
+            <div class="flex items-center gap-6">
+                <div class="flex gap-6 text-sm font-semibold tracking-wide text-zinc-600 dark:text-zinc-400">
+                    <a href="index.html" class="hover:text-zinc-900 dark:hover:text-zinc-100 transition">Home</a>
+                    <a href="rankings.html" class="text-zinc-900 dark:text-zinc-100 transition">Rankings</a>
+                    <a href="#" class="hover:text-zinc-900 dark:hover:text-zinc-100 transition">Stats</a>
+                    <a href="#" class="hover:text-zinc-900 dark:hover:text-zinc-100 transition">Schedule</a>
+                </div>
+
+                <div class="h-4 w-px bg-zinc-200 dark:bg-zinc-800"></div>
+
+                <button id="theme-toggle" class="flex items-center justify-center p-2 rounded-lg bg-zinc-100 dark:bg-zinc-900 hover:bg-zinc-200 dark:hover:bg-zinc-800 border border-zinc-200 dark:border-zinc-800 cursor-pointer transition">
+                    <svg id="theme-toggle-sun" class="w-5 h-5 text-amber-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707m2.828 9.9a5 5 0 117.072 0 5 5 0 01-7.072 0z"></path>
+                    </svg>
+                    <svg id="theme-toggle-moon" class="w-5 h-5 text-blue-600 hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <header class="relative bg-gradient-to-r from-blue-50/60 to-zinc-100/60 dark:from-blue-950/40 dark:to-zinc-950/40 backdrop-blur-sm py-16 px-6 text-center border-b border-zinc-200/60 dark:border-zinc-800/60 transition-colors duration-300">
+        <div class="max-w-5xl mx-auto">
+            <span class="bg-blue-100 dark:bg-blue-600/20 text-blue-600 dark:text-blue-400 text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full border border-blue-200/50 dark:border-blue-500/30">
+                VFL Standings
+            </span>
+            <h1 class="text-4xl md:text-6xl font-black tracking-tight mt-4 bg-gradient-to-b from-zinc-900 to-zinc-600 dark:from-white dark:to-zinc-400 bg-clip-text text-transparent">
+                LEAGUE RANKINGS
+            </h1>
+            <p class="text-zinc-700 dark:text-zinc-300 mt-2 text-sm md:text-base max-w-2xl mx-auto font-medium">
+                Track team progress, point differentials, and strength of schedule as the race to the postseason heats up.
+            </p>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-4 md:px-8 py-12">
+        <section class="bg-white/80 dark:bg-zinc-900/80 backdrop-blur-md border border-zinc-200/80 dark:border-zinc-800/80 rounded-2xl transition-colors duration-300 shadow-lg overflow-hidden">
+            <div class="bg-black text-white text-center py-3 text-sm font-black uppercase tracking-widest">
+                Official VFL Leaderboard
+            </div>
+            <div class="overflow-x-auto">
+                <table class="w-full text-left text-sm whitespace-nowrap">
+                    <thead>
+                      <tr class="border-b border-zinc-200/80 dark:border-zinc-800/80 text-zinc-400 dark:text-zinc-500 font-bold uppercase tracking-wider text-xs">
+                        <th class="py-4 px-4 text-center w-16">Rank</th>
+                        <th class="py-4 px-4">Team</th>
+                        <th class="py-4 px-4 text-center">Wins</th>
+                        <th class="py-4 px-4 text-center">Losses</th>
+                        <th class="py-4 px-4 text-center">Conf (CF)</th>
+                        <th class="py-4 px-4 text-center">Diff (PD)</th>
+                        <th class="py-4 px-4 text-right pr-6">SOS</th>
+                      </tr>
+                    </thead>
+                    <tbody class="divide-y divide-zinc-200/40 dark:divide-zinc-800/20 font-semibold text-zinc-700 dark:text-zinc-300">
+                      <tr class="hover:bg-zinc-100/50 dark:hover:bg-zinc-800/30 transition">
+                        <td class="text-center py-3.5 px-4 font-mono text-zinc-400">1</td>
+                        <td class="py-3.5 px-4 text-zinc-900 dark:text-white font-bold">Blizzards</td>
+                        <td class="text-center py-3.5 px-4 font-bold dark:text-white text-zinc-900">7</td>
+                        <td class="text-center py-3.5 px-4 font-bold dark:text-white text-zinc-900">1</td>
+                        <td class="text-center py-3.5 px-4 font-mono text-zinc-500">4-0</td>
+                        <td class="text-center py-3.5 px-4 font-mono text-emerald-600 dark:text-emerald-400">+123</td>
+                        <td class="text-right py-3.5 px-4 pr-6 font-mono text-zinc-500">0.58</td>
+                      </tr>
+                      <tr class="hover:bg-zinc-100/50 dark:hover:bg-zinc-800/30 transition">
+                        <td class="text-center py-3.5 px-4 font-mono text-zinc-400">2</td>
+                        <td class="py-3.5 px-4 text-zinc-900 dark:text-white font-bold">Tigers</td>
+                        <td class="text-center py-3.5 px-4 font-bold dark:text-white text-zinc-900">7</td>
+                        <td class="text-center py-3.5 px-4 font-bold dark:text-white text-zinc-900">1</td>
+                        <td class="text-center py-3.5 px-4 font-mono text-zinc-500">4-0</td>
+                        <td class="text-center py-3.5 px-4 font-mono text-emerald-600 dark:text-emerald-400">+136</td>
+                        <td class="text-right py-3.5 px-4 pr-6 font-mono text-zinc-500">0.57</td>
+                      </tr>
+                      <tr class="hover:bg-zinc-100/50 dark:hover:bg-zinc-800/30 transition">
+                        <td class="text-center py-3.5 px-4 font-mono text-zinc-400">3</td>
+                        <td class="py-3.5 px-4 text-zinc-900 dark:text-white font-bold">Bluebirds</td>
+                        <td class="text-center py-3.5 px-4 font-bold dark:text-white text-zinc-900">7</td>
+                        <td class="text-center py-3.5 px-4 font-bold dark:text-white text-zinc-900">1</td>
+                        <td class="text-center py-3.5 px-4 font-mono text-zinc-500">3-1</td>
+                        <td class="text-center py-3.5 px-4 font-mono text-emerald-600 dark:text-emerald-400">+153</td>
+                        <td class="text-right py-3.5 px-4 pr-6 font-mono text-zinc-500">0.54</td>
+                      </tr>
+                      <tr class="hover:bg-zinc-100/50 dark:hover:bg-zinc-800/30 transition">
+                        <td class="text-center py-3.5 px-4 font-mono text-zinc-400">4</td>
+                        <td class="py-3.5 px-4 text-zinc-900 dark:text-white font-bold">Ghosts</td>
+                        <td class="text-center py-3.5 px-4 font-bold dark:text-white text-zinc-900">5</td>
+                        <td class="text-center py-3.5 px-4 font-bold dark:text-white text-zinc-900">3</td>
+                        <td class="text-center py-3.5 px-4 font-mono text-zinc-500">3-1</td>
+                        <td class="text-center py-3.5 px-4 font-mono text-emerald-600 dark:text-emerald-400">+17</td>
+                        <td class="text-right py-3.5 px-4 pr-6 font-mono text-zinc-500">0.54</td>
+                      </tr>
+                      <tr class="hover:bg-zinc-100/50 dark:hover:bg-zinc-800/30 transition">
+                        <td class="text-center py-3.5 px-4 font-mono text-zinc-400">5</td>
+                        <td class="py-3.5 px-4 text-zinc-900 dark:text-white font-bold">Widows</td>
+                        <td class="text-center py-3.5 px-4 font-bold dark:text-white text-zinc-900">4</td>
+                        <td class="text-center py-3.5 px-4 font-bold dark:text-white text-zinc-900">4</td>
+                        <td class="text-center py-3.5 px-4 font-mono text-zinc-500">6-1</td>
+                        <td class="text-center py-3.5 px-4 font-mono text-emerald-600 dark:text-emerald-400">+228</td>
+                        <td class="text-right py-3.5 px-4 pr-6 font-mono text-zinc-500">0.59</td>
+                      </tr>
+                      <tr class="hover:bg-zinc-100/50 dark:hover:bg-zinc-800/30 transition">
+                        <td class="text-center py-3.5 px-4 font-mono text-zinc-400">6</td>
+                        <td class="py-3.5 px-4 text-zinc-900 dark:text-white font-bold">Freedom</td>
+                        <td class="text-center py-3.5 px-4 font-bold dark:text-white text-zinc-900">4</td>
+                        <td class="text-center py-3.5 px-4 font-bold dark:text-white text-zinc-900">4</td>
+                        <td class="text-center py-3.5 px-4 font-mono text-zinc-500">7-0</td>
+                        <td class="text-center py-3.5 px-4 font-mono text-emerald-600 dark:text-emerald-400">+214</td>
+                        <td class="text-right py-3.5 px-4 pr-6 font-mono text-zinc-500">0.61</td>
+                      </tr>
+                      <tr class="hover:bg-zinc-100/50 dark:hover:bg-zinc-800/30 transition">
+                        <td class="text-center py-3.5 px-4 font-mono text-zinc-400">7</td>
+                        <td class="py-3.5 px-4 text-zinc-900 dark:text-white font-bold">Coyotes</td>
+                        <td class="text-center py-3.5 px-4 font-bold dark:text-white text-zinc-900">4</td>
+                        <td class="text-center py-3.5 px-4 font-bold dark:text-white text-zinc-900">4</td>
+                        <td class="text-center py-3.5 px-4 font-mono text-zinc-500">6-1</td>
+                        <td class="text-center py-3.5 px-4 font-mono text-emerald-600 dark:text-emerald-400">+171</td>
+                        <td class="text-right py-3.5 px-4 pr-6 font-mono text-zinc-500">0.54</td>
+                      </tr>
+                      <tr class="hover:bg-zinc-100/50 dark:hover:bg-zinc-800/30 transition">
+                        <td class="text-center py-3.5 px-4 font-mono text-zinc-400">8</td>
+                        <td class="py-3.5 px-4 text-zinc-900 dark:text-white font-bold">Rhinos</td>
+                        <td class="text-center py-3.5 px-4 font-bold dark:text-white text-zinc-900">4</td>
+                        <td class="text-center py-3.5 px-4 font-bold dark:text-white text-zinc-900">4</td>
+                        <td class="text-center py-3.5 px-4 font-mono text-zinc-500">6-1</td>
+                        <td class="text-center py-3.5 px-4 font-mono text-emerald-600 dark:text-emerald-400">+110</td>
+                        <td class="text-right py-3.5 px-4 pr-6 font-mono text-zinc-500">0.47</td>
+                      </tr>
+                      <tr class="hover:bg-zinc-100/50 dark:hover:bg-zinc-800/30 transition">
+                        <td class="text-center py-3.5 px-4 font-mono text-zinc-400">9</td>
+                        <td class="py-3.5 px-4 text-zinc-900 dark:text-white font-bold">Bats</td>
+                        <td class="text-center py-3.5 px-4 font-bold dark:text-white text-zinc-900">4</td>
+                        <td class="text-center py-3.5 px-4 font-bold dark:text-white text-zinc-900">4</td>
+                        <td class="text-center py-3.5 px-4 font-mono text-zinc-500">5-2</td>
+                        <td class="text-center py-3.5 px-4 font-mono text-emerald-600 dark:text-emerald-400">+109</td>
+                        <td class="text-right py-3.5 px-4 pr-6 font-mono text-zinc-500">0.53</td>
+                      </tr>
+                      <tr class="hover:bg-zinc-100/50 dark:hover:bg-zinc-800/30 transition">
+                        <td class="text-center py-3.5 px-4 font-mono text-zinc-400">10</td>
+                        <td class="py-3.5 px-4 text-zinc-900 dark:text-white font-bold">Royals</td>
+                        <td class="text-center py-3.5 px-4 font-bold dark:text-white text-zinc-900">4</td>
+                        <td class="text-center py-3.5 px-4 font-bold dark:text-white text-zinc-900">4</td>
+                        <td class="text-center py-3.5 px-4 font-mono text-zinc-500">5-2</td>
+                        <td class="text-center py-3.5 px-4 font-mono text-emerald-600 dark:text-emerald-400">+161</td>
+                        <td class="text-right py-3.5 px-4 pr-6 font-mono text-zinc-500">0.54</td>
+                      </tr>
+                      <tr class="hover:bg-zinc-100/50 dark:hover:bg-zinc-800/30 transition">
+                        <td class="text-center py-3.5 px-4 font-mono text-zinc-400">11</td>
+                        <td class="py-3.5 px-4 text-zinc-900 dark:text-white font-bold">Black Bears</td>
+                        <td class="text-center py-3.5 px-4 font-bold dark:text-white text-zinc-900">3</td>
+                        <td class="text-center py-3.5 px-4 font-bold dark:text-white text-zinc-900">5</td>
+                        <td class="text-center py-3.5 px-4 font-mono text-zinc-500">5-2</td>
+                        <td class="text-center py-3.5 px-4 font-mono text-emerald-600 dark:text-emerald-400">+68</td>
+                        <td class="text-right py-3.5 px-4 pr-6 font-mono text-zinc-500">0.62</td>
+                      </tr>
+                      <tr class="hover:bg-zinc-100/50 dark:hover:bg-zinc-800/30 transition">
+                        <td class="text-center py-3.5 px-4 font-mono text-zinc-400">12</td>
+                        <td class="py-3.5 px-4 text-zinc-900 dark:text-white font-bold">Tridents</td>
+                        <td class="text-center py-3.5 px-4 font-bold dark:text-white text-zinc-900">2</td>
+                        <td class="text-center py-3.5 px-4 font-bold dark:text-white text-zinc-900">6</td>
+                        <td class="text-center py-3.5 px-4 font-mono text-zinc-500">5-2</td>
+                        <td class="text-center py-3.5 px-4 font-mono text-emerald-600 dark:text-emerald-400">+131</td>
+                        <td class="text-right py-3.5 px-4 pr-6 font-mono text-zinc-500">0.54</td>
+                      </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <footer class="border-t border-zinc-200/60 dark:border-zinc-800/60 mt-20 bg-zinc-100/70 dark:bg-zinc-950/70 backdrop-blur-md py-8 px-6 text-center text-xs text-zinc-500 font-medium transition-colors duration-300">
+        <p>© 2026 Virtual Football League. All rights reserved. This league is not affiliated with Roblox Corporation or the NFL.</p>
+    </footer>
+
+    <script>
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const sunIcon = document.getElementById('theme-toggle-sun');
+        const moonIcon = document.getElementById('theme-toggle-moon');
+        const htmlElement = document.documentElement;
+        const bodyElement = document.getElementById('vfl-body');
+
+        const bgUrl = "url('https://cdn.discordapp.com/attachments/1487965610804514826/1521749796724150323/IMG_1024.png?ex=6a45f770&is=6a44a5f0&hm=fa19f73e07c9cbd07d6883d08fb8df2cad458e37bf1ea1249e9b067a32045dad&')";
+
+        function updateBackground() {
+            if (htmlElement.classList.contains('dark')) {
+                sunIcon.classList.remove('hidden');
+                moonIcon.classList.add('hidden');
+                bodyElement.style.backgroundImage = `linear-gradient(rgba(9, 9, 11, 0.90), rgba(9, 9, 11, 0.90)), ${bgUrl}`;
+            } else {
+                sunIcon.classList.add('hidden');
+                moonIcon.classList.remove('hidden');
+                bodyElement.style.backgroundImage = `linear-gradient(rgba(244, 244, 245, 0.85), rgba(244, 244, 245, 0.85)), ${bgUrl}`;
+            }
+        }
+
+        updateBackground();
+
+        themeToggleBtn.addEventListener('click', () => {
+            if (htmlElement.classList.contains('dark')) {
+                htmlElement.classList.remove('dark');
+            } else {
+                htmlElement.classList.add('dark');
+            }
+            updateBackground();
+        });
+    </script>
+</body>
+</html>
