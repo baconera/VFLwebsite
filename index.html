@@ -1,244 +1,177 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>VFL</title>
-
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
-
-body{
-    margin:0;
-    font-family:'Inter', Arial, sans-serif;
-    background:#05070f;
-    color:white;
-}
-
-/* NAV */
-.nav{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:18px 60px;
-    background:rgba(15,23,42,0.8);
-    backdrop-filter: blur(10px);
-    position:sticky;
-    top:0;
-    border-bottom:1px solid rgba(255,255,255,0.06);
-    z-index:10;
-}
-
-.nav h1{
-    color:#ff7a00;
-    margin:0;
-    font-size:26px;
-}
-
-.nav a{
-    color:#cbd5e1;
-    margin-left:22px;
-    text-decoration:none;
-    font-size:14px;
-    transition:0.3s;
-}
-
-.nav a:hover{
-    color:#ff7a00;
-}
-
-/* HERO */
-.hero{
-    height:85vh;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    text-align:center;
-    background:
-        radial-gradient(circle at top, rgba(255,122,0,0.15), transparent 60%),
-        radial-gradient(circle at bottom, rgba(59,130,246,0.12), transparent 60%),
-        #05070f;
-}
-
-.hero h1{
-    font-size:90px;
-    margin:0;
-    letter-spacing:3px;
-    font-weight:800;
-}
-
-.hero p{
-    color:#94a3b8;
-    font-size:18px;
-    margin-top:10px;
-    max-width:600px;
-}
-
-.button{
-    margin-top:28px;
-    padding:14px 38px;
-    background:linear-gradient(135deg,#ff7a00,#ff4d00);
-    border-radius:14px;
-    text-decoration:none;
-    color:white;
-    font-weight:600;
-    transition:0.3s;
-    box-shadow:0 10px 30px rgba(255,122,0,0.25);
-}
-
-.button:hover{
-    transform:translateY(-3px) scale(1.03);
-}
-
-/* SECTION */
-.section{
-    max-width:1200px;
-    margin:90px auto;
-    padding:0 20px;
-}
-
-.section h2{
-    font-size:26px;
-    margin-bottom:18px;
-    color:#e2e8f0;
-}
-
-/* GRID CARDS */
-.grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-    gap:18px;
-}
-
-.card{
-    background:rgba(17,24,39,0.7);
-    border:1px solid rgba(255,255,255,0.06);
-    padding:22px;
-    border-radius:18px;
-    transition:0.3s;
-    backdrop-filter: blur(10px);
-}
-
-.card:hover{
-    transform:translateY(-8px);
-    border-color:#ff7a00;
-}
-
-/* STANDINGS */
-table{
-    width:100%;
-    border-collapse:collapse;
-    overflow:hidden;
-    border-radius:14px;
-    background:rgba(17,24,39,0.7);
-    backdrop-filter: blur(10px);
-}
-
-th, td{
-    padding:14px;
-    text-align:center;
-    border-bottom:1px solid rgba(255,255,255,0.06);
-}
-
-th{
-    color:#ff7a00;
-    font-size:14px;
-    background:rgba(15,23,42,0.8);
-}
-
-tr:hover{
-    background:rgba(255,122,0,0.06);
-}
-
-/* FOOTER */
-footer{
-    text-align:center;
-    padding:50px;
-    color:#64748b;
-    border-top:1px solid rgba(255,255,255,0.06);
-    margin-top:60px;
-}
-</style>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VFL | Virtual Football League Official Home</title>
+    <!-- Tailwind CSS Play CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style>
+        /* Custom scrollbar and theme tweaks for that elite look */
+        body {
+            background-color: #09090b;
+        }
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #09090b;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #27272a;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #3f3f46;
+        }
+    </style>
 </head>
+<body class="text-zinc-100 font-sans antialiased">
 
-<body>
+    <!-- 1. NAVIGATION BAR -->
+    <nav class="sticky top-0 z-50 bg-zinc-950/80 backdrop-blur-md border-b border-zinc-800 px-6 py-4">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <a href="#" class="text-2xl font-black tracking-wider text-blue-500">VFL</a>
+            <div class="flex gap-6 text-sm font-semibold tracking-wide text-zinc-400">
+                <a href="#" class="text-zinc-100 transition">Home</a>
+                <a href="#standings" class="hover:text-zinc-100 transition">Standings</a>
+                <a href="#stats" class="hover:text-zinc-100 transition">Stats</a>
+                <a href="#schedule" class="hover:text-zinc-100 transition">Schedule</a>
+            </div>
+        </div>
+    </nav>
 
-<!-- NAV -->
-<div class="nav">
-    <h1>🏈 VFL</h1>
-    <div>
-        <a href="#home">Home</a>
-        <a href="#news">News</a>
-        <a href="#standings">Standings</a>
-        <a href="#schedule">Schedule</a>
-    </div>
-</div>
+    <!-- 2. HERO BANNER -->
+    <header class="relative bg-gradient-to-r from-blue-950 to-zinc-950 py-24 px-6 text-center border-b border-zinc-800">
+        <div class="max-w-5xl mx-auto">
+            <span class="bg-blue-600/20 text-blue-400 text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full border border-blue-500/30">
+                Official Home of the VFL
+            </span>
+            <h1 class="text-5xl md:text-7xl font-black tracking-tight mt-6 bg-gradient-to-b from-white to-zinc-400 bg-clip-text text-transparent">
+                VIRTUAL FOOTBALL LEAGUE
+            </h1>
+            <p class="text-zinc-400 mt-4 text-base md:text-lg max-w-2xl mx-auto">
+                Experience the highest tier of competitive Roblox gridiron. Roster updates, live stats, and championship legacies start here.
+            </p>
+            <div class="mt-8 flex flex-wrap justify-center gap-4">
+                <a href="https://discord.gg/yourlink" target="_blank" class="bg-blue-600 hover:bg-blue-500 text-white px-6 py-3 rounded-xl font-bold tracking-wide transition shadow-lg shadow-blue-600/20">
+                    Join the Discord
+                </a>
+                <a href="#standings" class="bg-zinc-900 hover:bg-zinc-800 text-zinc-200 px-6 py-3 rounded-xl font-bold tracking-wide transition border border-zinc-800">
+                    View Ladders
+                </a>
+            </div>
+        </div>
+    </header>
 
-<!-- HERO -->
-<section class="hero" id="home">
-    <h1>VFL</h1>
-    <p>The most competitive virtual football league — stats, games, and championships all in one place.</p>
-    <a class="button" href="#standings">View Standings</a>
-</section>
+    <!-- 3. MAIN DASHBOARD CONTENT -->
+    <main class="max-w-7xl mx-auto px-4 md:px-8 py-12 grid grid-cols-1 lg:grid-cols-3 gap-8">
+        
+        <!-- LEFT/CENTER DIVISION (Game of the Week & News Feed) -->
+        <div class="lg:col-span-2 space-y-8">
+            
+            <!-- MARQUEE MATCHUP -->
+            <section class="bg-zinc-900 border border-zinc-800 rounded-2xl p-6">
+                <h2 class="text-xs font-bold uppercase tracking-wider text-blue-400 mb-4 flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span> Game of the Week
+                </h2>
+                <div class="flex flex-col sm:flex-row items-center justify-between gap-6 bg-zinc-950 p-6 rounded-xl border border-zinc-900">
+                    <div class="text-center sm:text-left">
+                        <span class="text-3xl">🟣</span>
+                        <h3 class="text-xl font-bold mt-1">VFL Ravens</h3>
+                        <p class="text-xs text-zinc-500 font-medium">(5-0)</p>
+                    </div>
+                    
+                    <div class="text-center">
+                        <span class="text-zinc-700 font-black tracking-widest text-sm">VS</span>
+                        <p class="text-xs text-blue-400 mt-2 font-mono bg-blue-950/40 px-2 py-0.5 rounded border border-blue-900/50">Saturday 8 PM EST</p>
+                    </div>
 
-<!-- NEWS -->
-<section class="section" id="news">
-    <h2>🔥 Latest News</h2>
+                    <div class="text-center sm:text-right">
+                        <span class="text-3xl">🟤</span>
+                        <h3 class="text-xl font-bold mt-1">VFL Browns</h3>
+                        <p class="text-xs text-zinc-500 font-medium">(4-1)</p>
+                    </div>
+                </div>
+                <div class="mt-4 text-center">
+                    <a href="#" class="text-sm text-zinc-400 hover:text-blue-400 transition font-medium">
+                        Watch Live Stream Matchup →
+                    </a>
+                </div>
+            </section>
 
-    <div class="grid">
-        <div class="card">
-            <h3>Week 1 Recap</h3>
-            <p>Wolves dominate opening week with a strong performance.</p>
+            <!-- LEAGUE NEWS -->
+            <section class="space-y-4">
+                <h2 class="text-2xl font-black tracking-tight">Latest VFL News</h2>
+                <div class="grid gap-4">
+                    <!-- Article 1 -->
+                    <div class="bg-zinc-900 border border-zinc-800 rounded-2xl p-5 hover:border-zinc-700 transition cursor-pointer group">
+                        <span class="text-xs font-bold uppercase text-blue-400 bg-blue-950/40 px-2 py-0.5 rounded border border-blue-900/30">
+                            Rankings
+                        </span>
+                        <h3 class="text-lg font-bold mt-2 group-hover:text-blue-400 transition">VFL Week 5 Power Rankings: Ravens Take the Crown</h3>
+                        <p class="text-xs text-zinc-500 mt-1 font-medium">June 28, 2026</p>
+                    </div>
+                    <!-- Article 2 -->
+                    <div class="bg-zinc-900 border border-zinc-800 rounded-2xl p-5 hover:border-zinc-700 transition cursor-pointer group">
+                        <span class="text-xs font-bold uppercase text-amber-400 bg-amber-950/40 px-2 py-0.5 rounded border border-amber-900/30">
+                            Rosters
+                        </span>
+                        <h3 class="text-lg font-bold mt-2 group-hover:text-amber-400 transition">Mid-Season Transfer Window: Big Trades Finalized Ahead of Deadline</h3>
+                        <p class="text-xs text-zinc-500 mt-1 font-medium">June 25, 2026</p>
+                    </div>
+                </div>
+            </section>
         </div>
 
-        <div class="card">
-            <h3>MVP Watch</h3>
-            <p>Early MVP race begins heating up across the league.</p>
+        <!-- RIGHT SIDEBAR (Quick Standings / Hub Info) -->
+        <div id="standings" class="space-y-6">
+            <section class="bg-zinc-900 border border-zinc-800 rounded-2xl p-6">
+                <h2 class="text-lg font-black tracking-tight mb-4">VFC North Standings</h2>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-sm">
+                        <thead>
+                          <tr class="border-b border-zinc-800 text-zinc-500 text-xs font-bold uppercase tracking-wider">
+                            <th class="pb-3">Team</th>
+                            <th class="pb-3 text-center">W</th>
+                            <th class="pb-3 text-center">L</th>
+                            <th class="pb-3 text-center">PCT</th>
+                          </tr>
+                        </thead>
+                        <tbody class="divide-y divide-zinc-800/40 font-semibold text-zinc-300">
+                          <tr>
+                            <td class="py-3.5 flex items-center gap-2"><span>🟣</span> Ravens</td>
+                            <td class="text-center py-3.5 font-mono">5</td>
+                            <td class="text-center py-3.5 font-mono">0</td>
+                            <td class="text-center py-3.5 font-mono text-zinc-500">1.000</td>
+                          </tr>
+                          <tr>
+                            <td class="py-3.5 flex items-center gap-2"><span>🟤</span> Browns</td>
+                            <td class="text-center py-3.5 font-mono">4</td>
+                            <td class="text-center py-3.5 font-mono">1</td>
+                            <td class="text-center py-3.5 font-mono text-zinc-500">.800</td>
+                          </tr>
+                          <tr>
+                            <td class="py-3.5 flex items-center gap-2"><span>🔵</span> Steelers</td>
+                            <td class="text-center py-3.5 font-mono">2</td>
+                            <td class="text-center py-3.5 font-mono">3</td>
+                            <td class="text-center py-3.5 font-mono text-zinc-500">.400</td>
+                          </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <a href="#" class="block text-center text-xs font-bold text-zinc-500 hover:text-zinc-300 mt-5 transition uppercase tracking-wider">
+                    View Full Ladders →
+                </a>
+            </section>
         </div>
 
-        <div class="card">
-            <h3>Trade Window</h3>
-            <p>Teams begin adjusting rosters before Week 2 matchups.</p>
-        </div>
-    </div>
-</section>
+    </main>
 
-<!-- STANDINGS -->
-<section class="section" id="standings">
-    <h2>🏆 Standings</h2>
-
-    <table>
-        <tr>
-            <th>Rank</th>
-            <th>Team</th>
-            <th>W</th>
-            <th>L</th>
-        </tr>
-
-        <tr><td>1</td><td>Wolves</td><td>7</td><td>1</td></tr>
-        <tr><td>2</td><td>Titans</td><td>6</td><td>2</td></tr>
-        <tr><td>3</td><td>Hawks</td><td>5</td><td>3</td></tr>
-        <tr><td>4</td><td>Sharks</td><td>4</td><td>4</td></tr>
-    </table>
-</section>
-
-<!-- SCHEDULE -->
-<section class="section" id="schedule">
-    <h2>📅 Schedule</h2>
-
-    <div class="grid">
-        <div class="card">Wolves vs Titans — Week 2</div>
-        <div class="card">Hawks vs Sharks — Week 2</div>
-        <div class="card">Lions vs Bulls — Week 2</div>
-    </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-    © 2026 VFL League • Built for competition
-</footer>
+    <!-- 4. FOOTER -->
+    <footer class="border-t border-zinc-800 mt-20 bg-zinc-950 py-8 px-6 text-center text-xs text-zinc-600 font-medium">
+        <p>© 2026 Virtual Football League. All rights reserved. This league is not affiliated with Roblox Corporation or the NFL.</p>
+    </footer>
 
 </body>
 </html>
