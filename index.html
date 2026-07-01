@@ -46,7 +46,7 @@
             <div class="flex items-center gap-6">
                 <div class="flex gap-6 text-sm font-semibold tracking-wide text-zinc-500 dark:text-zinc-400">
                     <a href="#" class="text-zinc-900 dark:text-zinc-100 transition">Home</a>
-                    <a href="#standings" class="hover:text-zinc-900 dark:hover:text-zinc-100 transition">Standings</a>
+                    <a href="#standings" class="hover:text-zinc-900 dark:hover:text-zinc-100 transition">Rankings</a>
                     <a href="#stats" class="hover:text-zinc-900 dark:hover:text-zinc-100 transition">Stats</a>
                     <a href="#schedule" class="hover:text-zinc-900 dark:hover:text-zinc-100 transition">Schedule</a>
                 </div>
@@ -140,41 +140,72 @@
 
         <div id="standings" class="space-y-6">
             <section class="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-2xl p-6 transition-colors duration-300 shadow-sm">
-                <h2 class="text-lg font-black tracking-tight mb-4">VFC North Standings</h2>
+                <h2 class="text-lg font-black tracking-tight mb-4">VFL Top 10 Teams</h2>
                 <div class="overflow-x-auto">
                     <table class="w-full text-left text-sm">
                         <thead>
                           <tr class="border-b border-zinc-200 dark:border-zinc-800 text-zinc-500 text-xs font-bold uppercase tracking-wider">
+                            <th class="pb-3 text-center w-10">#</th>
                             <th class="pb-3">Team</th>
-                            <th class="pb-3 text-center">W</th>
-                            <th class="pb-3 text-center">L</th>
-                            <th class="pb-3 text-center">PCT</th>
+                            <th class="pb-3 text-right">Record</th>
                           </tr>
                         </thead>
                         <tbody class="divide-y divide-zinc-200/60 dark:divide-zinc-800/40 font-semibold text-zinc-700 dark:text-zinc-300">
                           <tr>
-                            <td class="py-3.5 flex items-center gap-2"><span>🟣</span> Ravens</td>
-                            <td class="text-center py-3.5 font-mono">5</td>
-                            <td class="text-center py-3.5 font-mono">0</td>
-                            <td class="text-center py-3.5 font-mono text-zinc-400 dark:text-zinc-500">1.000</td>
+                            <td class="text-center py-2.5 font-mono text-zinc-400">1</td>
+                            <td class="py-2.5 flex items-center gap-2">❄️ Blizzards</td>
+                            <td class="text-right py-2.5 font-mono text-blue-500">7-1</td>
                           </tr>
                           <tr>
-                            <td class="py-3.5 flex items-center gap-2"><span>🟤</span> Browns</td>
-                            <td class="text-center py-3.5 font-mono">4</td>
-                            <td class="text-center py-3.5 font-mono">1</td>
-                            <td class="text-center py-3.5 font-mono text-zinc-400 dark:text-zinc-500">.800</td>
+                            <td class="text-center py-2.5 font-mono text-zinc-400">2</td>
+                            <td class="py-2.5 flex items-center gap-2">🐯 Tigers</td>
+                            <td class="text-right py-2.5 font-mono text-blue-500">7-1</td>
                           </tr>
                           <tr>
-                            <td class="py-3.5 flex items-center gap-2"><span>🔵</span> Steelers</td>
-                            <td class="text-center py-3.5 font-mono">2</td>
-                            <td class="text-center py-3.5 font-mono">3</td>
-                            <td class="text-center py-3.5 font-mono text-zinc-400 dark:text-zinc-500">.400</td>
+                            <td class="text-center py-2.5 font-mono text-zinc-400">3</td>
+                            <td class="py-2.5 flex items-center gap-2">🐦 Bluebirds</td>
+                            <td class="text-right py-2.5 font-mono text-blue-500">7-1</td>
+                          </tr>
+                          <tr>
+                            <td class="text-center py-2.5 font-mono text-zinc-400">4</td>
+                            <td class="py-2.5 flex items-center gap-2">👻 Ghosts</td>
+                            <td class="text-right py-2.5 font-mono">5-3</td>
+                          </tr>
+                          <tr>
+                            <td class="text-center py-2.5 font-mono text-zinc-400">5</td>
+                            <td class="py-2.5 flex items-center gap-2">🕷️ Widows</td>
+                            <td class="text-right py-2.5 font-mono">4-4</td>
+                          </tr>
+                          <tr>
+                            <td class="text-center py-2.5 font-mono text-zinc-400">6</td>
+                            <td class="py-2.5 flex items-center gap-2">🦅 Freedom</td>
+                            <td class="text-right py-2.5 font-mono">4-4</td>
+                          </tr>
+                          <tr>
+                            <td class="text-center py-2.5 font-mono text-zinc-400">7</td>
+                            <td class="py-2.5 flex items-center gap-2">🐺 Coyotes</td>
+                            <td class="text-right py-2.5 font-mono">4-4</td>
+                          </tr>
+                          <tr>
+                            <td class="text-center py-2.5 font-mono text-zinc-400">8</td>
+                            <td class="py-2.5 flex items-center gap-2">🦏 Rhinos</td>
+                            <td class="text-right py-2.5 font-mono">4-4</td>
+                          </tr>
+                          <tr>
+                            <td class="text-center py-2.5 font-mono text-zinc-400">9</td>
+                            <td class="py-2.5 flex items-center gap-2">🦇 Bats</td>
+                            <td class="text-right py-2.5 font-mono">4-4</td>
+                          </tr>
+                          <tr>
+                            <td class="text-center py-2.5 font-mono text-zinc-400">10</td>
+                            <td class="py-2.5 flex items-center gap-2">👑 Royals</td>
+                            <td class="text-right py-2.5 font-mono">4-4</td>
                           </tr>
                         </tbody>
                     </table>
                 </div>
                 <a href="#" class="block text-center text-xs font-bold text-zinc-500 hover:text-zinc-700 dark:hover:text-zinc-300 mt-5 transition uppercase tracking-wider">
-                    View Full Ladders →
+                    View Full Standings →
                 </a>
             </section>
         </div>
