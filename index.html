@@ -77,7 +77,7 @@
                 Experience the highest tier of competitive Roblox gridiron. Roster updates, live stats, and championship legacies start here.
             </p>
             <div class="mt-8 flex flex-wrap justify-center gap-4">
-                <a href="https://discord.gg/yourlink" target="_blank" class="bg-blue-600 hover:bg-blue-500 text-white px-6 py-3 rounded-xl font-bold tracking-wide transition shadow-lg shadow-blue-600/20">
+                <a href="https://discord.gg/HndAkSTYZp" target="_blank" class="bg-blue-600 hover:bg-blue-500 text-white px-6 py-3 rounded-xl font-bold tracking-wide transition shadow-lg shadow-blue-600/20">
                     Join the Discord
                 </a>
             </div>
@@ -191,9 +191,6 @@
         const moonIcon = document.getElementById('theme-toggle-moon');
         const htmlElement = document.documentElement;
 
-        // Sync visual display logic with screenshot properties:
-        // class="dark" -> Background is BLACK, Icon is SUN
-        // No dark class -> Background is WHITE, Icon is MOON
         if (htmlElement.classList.contains('dark')) {
             sunIcon.classList.remove('hidden');
             moonIcon.classList.add('hidden');
@@ -204,17 +201,11 @@
 
         themeToggleBtn.addEventListener('click', () => {
             if (htmlElement.classList.contains('dark')) {
-                // Switch to LIGHT MODE (Turns background White)
                 htmlElement.classList.remove('dark');
-                
-                // Show the Moon icon to reflect Light mode state
                 sunIcon.classList.add('hidden');
                 moonIcon.classList.remove('hidden');
             } else {
-                // Switch to DARK MODE (Turns background Black)
                 htmlElement.classList.add('dark');
-                
-                // Show the Sun icon to reflect Dark mode state
                 moonIcon.classList.add('hidden');
                 sunIcon.classList.remove('hidden');
             }
