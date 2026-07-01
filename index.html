@@ -7,59 +7,80 @@
     <!-- Tailwind CSS Play CDN -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <style>
-        /* Custom scrollbar and theme tweaks for that elite look */
-        body {
-            background-color: #09090b;
-        }
+        /* Custom scrollbar and theme tweaks */
         ::-webkit-scrollbar {
             width: 8px;
         }
         ::-webkit-scrollbar-track {
             background: #09090b;
         }
+        .light ::-webkit-scrollbar-track {
+            background: #f4f4f5;
+        }
         ::-webkit-scrollbar-thumb {
             background: #27272a;
             border-radius: 4px;
         }
+        .light ::-webkit-scrollbar-thumb {
+            background: #d4d4d8;
+        }
         ::-webkit-scrollbar-thumb:hover {
             background: #3f3f46;
         }
+        .light ::-webkit-scrollbar-thumb:hover {
+            background: #a1a1aa;
+        }
     </style>
 </head>
-<body class="text-zinc-100 font-sans antialiased">
+<!-- Defaulting to dark mode using the 'dark' class, background transitions handled by Tailwind -->
+<body class="dark bg-zinc-950 text-zinc-100 font-sans antialiased transition-colors duration-300 light:bg-zinc-50 light:text-zinc-900">
 
     <!-- 1. NAVIGATION BAR -->
-    <nav class="sticky top-0 z-50 bg-zinc-950/80 backdrop-blur-md border-b border-zinc-800 px-6 py-4">
+    <nav class="sticky top-0 z-50 bg-zinc-950/80 dark:bg-zinc-950/80 light:bg-white/80 backdrop-blur-md border-b border-zinc-800 light:border-zinc-200 px-6 py-4 transition-colors duration-300">
         <div class="max-w-7xl mx-auto flex items-center justify-between">
             <a href="#" class="text-2xl font-black tracking-wider text-blue-500">VFL</a>
-            <div class="flex gap-6 text-sm font-semibold tracking-wide text-zinc-400">
-                <a href="#" class="text-zinc-100 transition">Home</a>
-                <a href="#standings" class="hover:text-zinc-100 transition">Standings</a>
-                <a href="#stats" class="hover:text-zinc-100 transition">Stats</a>
-                <a href="#schedule" class="hover:text-zinc-100 transition">Schedule</a>
+            
+            <div class="flex items-center gap-6">
+                <div class="flex gap-6 text-sm font-semibold tracking-wide text-zinc-400 light:text-zinc-500">
+                    <a href="#" class="text-zinc-100 light:text-zinc-900 transition">Home</a>
+                    <a href="#standings" class="hover:text-zinc-100 light:hover:text-zinc-900 transition">Standings</a>
+                    <a href="#stats" class="hover:text-zinc-100 light:hover:text-zinc-900 transition">Stats</a>
+                    <a href="#schedule" class="hover:text-zinc-100 light:hover:text-zinc-900 transition">Schedule</a>
+                </div>
+
+                <!-- Separation Line -->
+                <div class="h-4 w-px bg-zinc-800 light:bg-zinc-200"></div>
+
+                <!-- Theme Toggle Button -->
+                <button id="theme-toggle" class="flex items-center justify-center p-2 rounded-lg bg-zinc-900 light:bg-zinc-100 hover:bg-zinc-800 light:hover:bg-zinc-200 border border-zinc-800 light:border-zinc-200 cursor-pointer transition">
+                    <!-- Sun Icon (Visible in Dark Mode) -->
+                    <svg id="theme-toggle-sun" class="w-5 h-5 text-amber-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707m2.828 9.9a5 5 0 117.072 0 5 5 0 01-7.072 0z"></path>
+                    </svg>
+                    <!-- Moon Icon (Hidden in Dark Mode, Visible in Light Mode) -->
+                    <svg id="theme-toggle-moon" class="w-5 h-5 text-blue-600 hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+                    </svg>
+                </button>
             </div>
         </div>
     </nav>
 
     <!-- 2. HERO BANNER -->
-    <header class="relative bg-gradient-to-r from-blue-950 to-zinc-950 py-24 px-6 text-center border-b border-zinc-800">
+    <header class="relative bg-gradient-to-r from-blue-950 to-zinc-950 light:from-blue-50 light:to-zinc-100 py-24 px-6 text-center border-b border-zinc-800 light:border-zinc-200 transition-colors duration-300">
         <div class="max-w-5xl mx-auto">
-            <span class="bg-blue-600/20 text-blue-400 text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full border border-blue-500/30">
+            <span class="bg-blue-600/20 light:bg-blue-100 text-blue-400 light:text-blue-600 text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full border border-blue-500/30 light:border-blue-200">
                 Official Home of the VFL
             </span>
-            <h1 class="text-5xl md:text-7xl font-black tracking-tight mt-6 bg-gradient-to-b from-white to-zinc-400 bg-clip-text text-transparent">
+            <h1 class="text-5xl md:text-7xl font-black tracking-tight mt-6 bg-gradient-to-b from-white to-zinc-400 light:from-zinc-900 light:to-zinc-600 bg-clip-text text-transparent">
                 VIRTUAL FOOTBALL LEAGUE
             </h1>
-            <p class="text-zinc-400 mt-4 text-base md:text-lg max-w-2xl mx-auto">
+            <p class="text-zinc-400 light:text-zinc-600 mt-4 text-base md:text-lg max-w-2xl mx-auto">
                 Experience the highest tier of competitive Roblox gridiron. Roster updates, live stats, and championship legacies start here.
             </p>
             <div class="mt-8 flex flex-wrap justify-center gap-4">
-                <!-- DISCORD LINK UPDATED HERE -->
-                <a href="https://discord.gg/HndAkSTYZp" target="_blank" rel="noopener noreferrer" class="bg-blue-600 hover:bg-blue-500 text-white px-6 py-3 rounded-xl font-bold tracking-wide transition shadow-lg shadow-blue-600/20">
+                <a href="https://discord.gg/yourlink" target="_blank" class="bg-blue-600 hover:bg-blue-500 text-white px-6 py-3 rounded-xl font-bold tracking-wide transition shadow-lg shadow-blue-600/20">
                     Join the Discord
-                </a>
-                <a href="#standings" class="bg-zinc-900 hover:bg-zinc-800 text-zinc-200 px-6 py-3 rounded-xl font-bold tracking-wide transition border border-zinc-800">
-                    View Ladders
                 </a>
             </div>
         </div>
@@ -72,11 +93,11 @@
         <div class="lg:col-span-2 space-y-8">
             
             <!-- MARQUEE MATCHUP -->
-            <section class="bg-zinc-900 border border-zinc-800 rounded-2xl p-6">
-                <h2 class="text-xs font-bold uppercase tracking-wider text-blue-400 mb-4 flex items-center gap-2">
+            <section class="bg-zinc-900 light:bg-white border border-zinc-800 light:border-zinc-200 rounded-2xl p-6 transition-colors duration-300 shadow-sm">
+                <h2 class="text-xs font-bold uppercase tracking-wider text-blue-400 light:text-blue-600 mb-4 flex items-center gap-2">
                     <span class="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span> Game of the Week
                 </h2>
-                <div class="flex flex-col sm:flex-row items-center justify-between gap-6 bg-zinc-950 p-6 rounded-xl border border-zinc-900">
+                <div class="flex flex-col sm:flex-row items-center justify-between gap-6 bg-zinc-950 light:bg-zinc-50 p-6 rounded-xl border border-zinc-900 light:border-zinc-200 transition-colors duration-300">
                     <div class="text-center sm:text-left">
                         <span class="text-3xl">🟣</span>
                         <h3 class="text-xl font-bold mt-1">VFL Ravens</h3>
@@ -84,8 +105,8 @@
                     </div>
                     
                     <div class="text-center">
-                        <span class="text-zinc-700 font-black tracking-widest text-sm">VS</span>
-                        <p class="text-xs text-blue-400 mt-2 font-mono bg-blue-950/40 px-2 py-0.5 rounded border border-blue-900/50">Saturday 8 PM EST</p>
+                        <span class="text-zinc-700 light:text-zinc-300 font-black tracking-widest text-sm">VS</span>
+                        <p class="text-xs text-blue-400 light:text-blue-600 mt-2 font-mono bg-blue-950/40 light:bg-blue-50 px-2 py-0.5 rounded border border-blue-900/50 light:border-blue-200">Saturday 8 PM EST</p>
                     </div>
 
                     <div class="text-center sm:text-right">
@@ -95,7 +116,7 @@
                     </div>
                 </div>
                 <div class="mt-4 text-center">
-                    <a href="#" class="text-sm text-zinc-400 hover:text-blue-400 transition font-medium">
+                    <a href="#" class="text-sm text-zinc-400 light:text-zinc-500 hover:text-blue-400 light:hover:text-blue-600 transition font-medium">
                         Watch Live Stream Matchup →
                     </a>
                 </div>
@@ -106,40 +127,40 @@
                 <h2 class="text-2xl font-black tracking-tight">Latest VFL News</h2>
                 <div class="grid gap-4">
                     <!-- Article 1 -->
-                    <div class="bg-zinc-900 border border-zinc-800 rounded-2xl p-5 hover:border-zinc-700 transition cursor-pointer group">
-                        <span class="text-xs font-bold uppercase text-blue-400 bg-blue-950/40 px-2 py-0.5 rounded border border-blue-900/30">
+                    <div class="bg-zinc-900 light:bg-white border border-zinc-800 light:border-zinc-200 rounded-2xl p-5 hover:border-zinc-700 light:hover:border-zinc-400 transition cursor-pointer group shadow-sm">
+                        <span class="text-xs font-bold uppercase text-blue-400 light:text-blue-600 bg-blue-950/40 light:bg-blue-50 px-2 py-0.5 rounded border border-blue-900/30 light:border-blue-200">
                             Rankings
                         </span>
-                        <h3 class="text-lg font-bold mt-2 group-hover:text-blue-400 transition">VFL Week 5 Power Rankings: Ravens Take the Crown</h3>
+                        <h3 class="text-lg font-bold mt-2 group-hover:text-blue-400 light:group-hover:text-blue-600 transition">VFL Week 5 Power Rankings: Ravens Take the Crown</h3>
                         <p class="text-xs text-zinc-500 mt-1 font-medium">June 28, 2026</p>
                     </div>
                     <!-- Article 2 -->
-                    <div class="bg-zinc-900 border border-zinc-800 rounded-2xl p-5 hover:border-zinc-700 transition cursor-pointer group">
-                        <span class="text-xs font-bold uppercase text-amber-400 bg-amber-950/40 px-2 py-0.5 rounded border border-amber-900/30">
+                    <div class="bg-zinc-900 light:bg-white border border-zinc-800 light:border-zinc-200 rounded-2xl p-5 hover:border-zinc-700 light:hover:border-zinc-400 transition cursor-pointer group shadow-sm">
+                        <span class="text-xs font-bold uppercase text-amber-400 light:text-amber-600 bg-amber-950/40 light:bg-amber-50 px-2 py-0.5 rounded border border-amber-900/30 light:border-amber-200">
                             Rosters
                         </span>
-                        <h3 class="text-lg font-bold mt-2 group-hover:text-amber-400 transition">Mid-Season Transfer Window: Big Trades Finalized Ahead of Deadline</h3>
+                        <h3 class="text-lg font-bold mt-2 group-hover:text-amber-400 light:group-hover:text-amber-600 transition">Mid-Season Transfer Window: Big Trades Finalized Ahead of Deadline</h3>
                         <p class="text-xs text-zinc-500 mt-1 font-medium">June 25, 2026</p>
                     </div>
                 </div>
             </section>
         </div>
 
-        <!-- RIGHT SIDEBAR (Quick Standings / Hub Info) -->
+        <!-- RIGHT SIDEBAR (Quick Standings) -->
         <div id="standings" class="space-y-6">
-            <section class="bg-zinc-900 border border-zinc-800 rounded-2xl p-6">
+            <section class="bg-zinc-900 light:bg-white border border-zinc-800 light:border-zinc-200 rounded-2xl p-6 transition-colors duration-300 shadow-sm">
                 <h2 class="text-lg font-black tracking-tight mb-4">VFC North Standings</h2>
                 <div class="overflow-x-auto">
                     <table class="w-full text-left text-sm">
                         <thead>
-                          <tr class="border-b border-zinc-800 text-zinc-500 text-xs font-bold uppercase tracking-wider">
+                          <tr class="border-b border-zinc-800 light:border-zinc-200 text-zinc-500 text-xs font-bold uppercase tracking-wider">
                             <th class="pb-3">Team</th>
                             <th class="pb-3 text-center">W</th>
                             <th class="pb-3 text-center">L</th>
                             <th class="pb-3 text-center">PCT</th>
                           </tr>
                         </thead>
-                        <tbody class="divide-y divide-zinc-800/40 font-semibold text-zinc-300">
+                        <tbody class="divide-y divide-zinc-800/40 light:divide-zinc-200/60 font-semibold text-zinc-300 light:text-zinc-700">
                           <tr>
                             <td class="py-3.5 flex items-center gap-2"><span>🟣</span> Ravens</td>
                             <td class="text-center py-3.5 font-mono">5</td>
@@ -161,7 +182,7 @@
                         </tbody>
                     </table>
                 </div>
-                <a href="#" class="block text-center text-xs font-bold text-zinc-500 hover:text-zinc-300 mt-5 transition uppercase tracking-wider">
+                <a href="#" class="block text-center text-xs font-bold text-zinc-500 hover:text-zinc-300 light:hover:text-zinc-700 mt-5 transition uppercase tracking-wider">
                     View Full Ladders →
                 </a>
             </section>
@@ -170,9 +191,35 @@
     </main>
 
     <!-- 4. FOOTER -->
-    <footer class="border-t border-zinc-800 mt-20 bg-zinc-950 py-8 px-6 text-center text-xs text-zinc-600 font-medium">
+    <footer class="border-t border-zinc-800 light:border-zinc-200 mt-20 bg-zinc-950 light:bg-zinc-100 py-8 px-6 text-center text-xs text-zinc-600 light:text-zinc-500 font-medium transition-colors duration-300">
         <p>© 2026 Virtual Football League. All rights reserved. This league is not affiliated with Roblox Corporation or the NFL.</p>
     </footer>
 
+    <!-- Theme Toggle Logic Script -->
+    <script>
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const sunIcon = document.getElementById('theme-toggle-sun');
+        const moonIcon = document.getElementById('theme-toggle-moon');
+        const body = document.body;
+
+        themeToggleBtn.addEventListener('click', () => {
+            // Toggle HTML base class configuration via Tailwind variant states
+            if (body.classList.contains('dark')) {
+                body.classList.remove('dark');
+                body.classList.add('light');
+                
+                // Switch icons (Show moon, hide sun)
+                sunIcon.classList.add('hidden');
+                moonIcon.classList.remove('hidden');
+            } else {
+                body.classList.remove('light');
+                body.classList.add('dark');
+                
+                // Switch icons (Show sun, hide moon)
+                moonIcon.classList.add('hidden');
+                sunIcon.classList.remove('hidden');
+            }
+        });
+    </script>
 </body>
 </html>
